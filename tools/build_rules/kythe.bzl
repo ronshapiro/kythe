@@ -330,6 +330,7 @@ index_compilation = rule(
         ),
         "tools": attr.label_list(
             cfg = "host",
+            allow_files = True, # DO NOT SUBMIT needed to support _deploy.jars
         ),
         "indexer": attr.label(
             mandatory = True,

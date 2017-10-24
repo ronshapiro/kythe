@@ -247,6 +247,20 @@ java_verifier_test(
     load_plugin = "//kythe/javatests/com/google/devtools/kythe/analyzers/java:test_plugin",
 )
 
+# DO NOT SUBMIT: this is a hack to make sure all of the runtime deps for the plugin are available
+java_binary(
+    name = "dagger_plugin",
+    main_class = "foo.Bar",
+    runtime_deps = ["//kythe/java/dagger/internal/codegen:dagger-kythe-plugin"],
+)
+
+java_verifier_test(
+    name = "dagger_test",
+    size = "small",
+    srcs = ["DaggerTest.java"] + glob(["daggerstubs/*.java"]),
+    load_plugin = ":dagger_plugin_deploy.jar",
+)
+
 java_verifier_test(
     name = "static_variable_tests",
     size = "small",

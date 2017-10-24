@@ -4,7 +4,7 @@ load("//:version.bzl", "check_version")
 
 # Check that the user has a version between our minimum supported version of
 # Bazel and our maximum supported version of Bazel.
-check_version("0.6.0", "0.6.1")
+check_version("0.6.0", "0.7.0")
 
 load("//tools/cpp:clang_configure.bzl", "clang_configure")
 
@@ -132,8 +132,71 @@ maven_jar(
 
 maven_jar(
     name = "com_google_auto_common",
-    artifact = "com.google.auto:auto-common:0.3",
-    sha1 = "4073ab16ab4aceb9a217273da6442166bf51ae16",
+    artifact = "com.google.auto:auto-common:0.8",
+    sha1 = "c6f7af0e57b9d69d81b05434ef9f3c5610d498c4",
+)
+
+git_repository(
+    name = "com_google_dagger",
+    remote = "https://github.com/google/dagger.git",
+    tag = "dagger-2.12",
+)
+
+maven_jar(
+    name = "javax_annotation_jsr250_api",
+    artifact = "javax.annotation:jsr250-api:1.0",
+    sha1 = "5025422767732a1ab45d93abfea846513d742dcf",
+)
+
+maven_jar(
+    name = "javax_inject_javax_inject",
+    artifact = "javax.inject:javax.inject:1",
+    sha1 = "6975da39a7040257bd51d21a231b76c915872d38",
+)
+
+maven_jar(
+    name = "com_google_errorprone_javac",
+    artifact = "com.google.errorprone:javac-shaded:9-dev-r4023-3",
+    sha1 = "72b688efd290280a0afde5f9892b0fde6f362d1d",
+)
+
+maven_jar(
+    name = "com_google_googlejavaformat_google_java_format",
+    artifact = "com.google.googlejavaformat:google-java-format:1.4",
+    sha1 = "c2f8925850e17caa6da0ed1891a9e9de9414c062",
+)
+
+# DO NOT SUBMIT: can this be an alias?
+maven_jar(
+    name = "com_google_auto_value_auto_value",
+    artifact = "com.google.auto.value:auto-value:1.4.1",
+    sha1 = "8172ebbd7970188aff304c8a420b9f17168f6f48",
+)
+
+# DO NOT SUBMIT: can this be an alias?
+maven_jar(
+    name = "com_google_auto_service_auto_service",
+    artifact = "com.google.auto.service:auto-service:1.0-rc3",
+    sha1 = "35c5d43b0332b8f94d473f9fee5fb1d74b5e0056",
+)
+
+# DO NOT SUBMIT: can this be an alias?
+maven_jar(
+    name = "com_google_auto_auto_common",
+    artifact = "com.google.auto:auto-common:0.8",
+    sha1 = "c6f7af0e57b9d69d81b05434ef9f3c5610d498c4",
+)
+
+maven_jar(
+    name = "com_google_errorprone_error_prone_annotations",
+    artifact = "com.google.errorprone:error_prone_annotations:2.0.12",
+    sha1 = "8530d22d4ae8419e799d5a5234e0d2c0dcf15d4b",
+)
+
+maven_jar(
+    name = "com_squareup_javapoet",
+    artifact = "com.squareup:javapoet:1.8.0",
+    sha1 = "e858dc62ef484048540d27d36f3ec2177a3fa9b1",
 )
 
 git_repository(
